@@ -1,4 +1,4 @@
 CC=gcc
-LDFLAGS=-ftest-coverage -fprofile-arcs -lgcov
 
-%: %.c
+test: test.c
+	$(CC) -ftest-coverage -fprofile-arcs test.c -o test
