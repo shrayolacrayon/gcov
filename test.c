@@ -1,11 +1,9 @@
 //test file for gcov
 #include <stdio.h>
+#include "printStart.h"
 int gcd (int a, int b);
 int unused (int x);
 int main (int argc, char *argv[]){
-	char str[1024];
-	FILE* f;
-	int nb;
 	int sum = 0;
 	int evens = 0;
 	int i;
@@ -20,10 +18,7 @@ int main (int argc, char *argv[]){
 	gcd(3502, 42);
 	if (argc > 1)
 	{
-		f = fopen(argv[1], "r"); //opens up a file pointer for reading
-		nb = fread(str, 1,1023,f);
-		str[nb] = 0;
-		printf("%s \n ", str);
+	printStart(argv[1]);
 	}
 	return 0;
 	
