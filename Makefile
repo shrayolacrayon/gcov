@@ -5,7 +5,7 @@ TESTARGS=
 HELLOARGS=
 
 html: test.info
-	genhtml --branch-coverage test.info -o html
+	genhtml test.info -o html
 
 test.info: test.gcda hello.gcda
 	lcov -c -d . -o test.info
