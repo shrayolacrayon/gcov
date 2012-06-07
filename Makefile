@@ -3,7 +3,7 @@ CFLAGS=-ftest-coverage -fprofile-arcs
 LDFLAGS=-ftest-coverage -fprofile-arcs
 
 html: test.info
-	genhtml test.info -o html
+	genhtml --branch-coverage test.info -o html
 
 test.info: test.c.gcov 
 	lcov -c -d . -o test.info
@@ -11,7 +11,7 @@ test.info: test.c.gcov
 test.c.gcov: test.gcda
 	gcov test.c
 
-test.gcda: test test.gcno
+test.gcda: test 
 	./test
 
 test: test.o
