@@ -1,0 +1,18 @@
+1. Test program - 200 lines of code, branches 
+2. Research on GCov
+- 
+- Mongos Test Suite- output of GCov
+3. Tools Related to GCov
+4. Visualization of the data 
+
+Notes June 7, 2012
+- Made a test program that added all even numbers between 1 and 10000, and also 
+  did a recursive Euclid's algorithm in order to have an amount of branches. 
+- Got gcov to run using gcc-4.2. The gcc installed by XCode is using the llvm 
+  backend, so it doesn't support gcov.
+- The data goes into a text file so we would either need to parse through the 
+  file in order to get information needed or figure out a different interface.
+- lcov
+
+- We figured out how to do one source file, but we need to do multiple source files:
+	- Consolidate multiple sources files into one html page
