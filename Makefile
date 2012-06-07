@@ -1,7 +1,23 @@
 CC=gcc
+CFLAGS=-ftest-coverage -fprofile-arcs
+LDFLAGS=-ftest-coverage -fprofile-arcs
 
-test: test.c
-	$(CC) -ftest-coverage -fprofile-arcs test.c -o test
+html: test.info
+	genhtml test.info -o html
+
+test.info: test.c.gcov 
+	lcov -c -d . -o test.info
+
+test.c.gcov: test.gcda
+	gcov test.c
+
+test.gcda: test test.gcno
+	./test
+
+test: test.o
+
+test.o: test.c
 
 clean:
-	rm -f test *.gcno *.gcda *.o
+	rm -f test *.gcno *.gcda *.o *.info
+	rm -rf html
