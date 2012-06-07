@@ -1,0 +1,26 @@
+Compiling C and C++ files with gcov support
+
+To compile C and C++ files to support lcov pass the flags 
+	-ftest-coverage -fprofile-arcs
+to gcc. Make sure you do this in both the compilation and the linking stage.
+
+Note for Mac OSX users. The gcc provided by the latest versions of xcode now
+use the LLVM backend, and therefore do not support gcov output. In order to 
+use mainline gcc, install gcc from https://github.com/kennethreitz/osx-gcc-installer
+
+Running lcov and generating html output. 
+After compiling and running your executables, you should now have a bunch of 
+.gcda files alongside your source files. At this point, you can generate
+a summary of all the .gcda files in the current directory using by running 
+
+	lcov -c -d . -o infofile.info
+
+Where infofile.info is the name of the file you want to print out the summary
+data to. Once you've done this, you can generate html fo the summary data by
+running 
+
+	genhtml infofile.info -o html
+
+Where infofile.info is the info file to generate html for and html is the 
+directory you want the html files to be outputted to. You can now view the
+html summary by opening html/index.html in your web browser.
