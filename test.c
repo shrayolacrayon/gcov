@@ -14,6 +14,7 @@ int main (){
 	}
 	gcd(3502, 42);
 	
+	return 0;
 }
 
 int gcd(int a, int b){
