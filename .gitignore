@@ -4,4 +4,5 @@ test
 *.gcov
 *.o
 *.info
+*.swp
 html
