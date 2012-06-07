@@ -1,4 +1,5 @@
 test
+hello
 *.gcno
 *.gcda
 *.gcov
