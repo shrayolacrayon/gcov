@@ -1,7 +1,11 @@
 //test file for gcov
+#include <stdio.h>
 int gcd (int a, int b);
 int unused (int x);
-int main (){
+int main (int argc, char *argv[]){
+	char str[1024];
+	FILE* f;
+	int nb;
 	int sum = 0;
 	int evens = 0;
 	int i;
@@ -14,7 +18,15 @@ int main (){
 	}
 	}
 	gcd(3502, 42);
+	if (argc > 1)
+	{
+		f = fopen(argv[1], "r"); //opens up a file pointer for reading
+		nb = fread(str, 1,1023,f);
+		str[nb] = 0;
+		printf("%s \n ", str);
+	}
 	return 0;
+	
 }
 //gcd recursive
 int gcd(int a, int b){
