@@ -9,7 +9,8 @@ def pair():
     return [None, None]
 
 class Source:
-    def __init__(self):
+    def __init__(self, filename):
+        self.filename = filename
         self.branches = defaultdict(pair)
         self.functions = {}
         self.lines = {}
