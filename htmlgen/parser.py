@@ -3,6 +3,8 @@ import os
 
 class TracefileParser:
     def __init__(self, filename, basepath = None):
+        if not os.path.isfile(filename):
+            raise IOError('No such file' + filename)
         self.filename = filename
         self.basepath = basepath or os.path.dirname(filename)
         self.basepath = os.path.abspath(self.basepath)
