@@ -19,4 +19,6 @@ We then generated html output using the following commands
 
 	lcov -c -d build/darwin/cc_gcc-4.2/cxx_g++-4.2/gcov/ -b . -o mongodb.info
 	genhtml mongodb.info -o build/html
+	
+Creating this file and opening the index.html file gave results that were basically a list of the different programs run and then results on the frequency of the branches taken. The only problem with this interface is that it only shows the code coverage percentages. We are not able to find any flags that can allow us to visually access the branch probability statistics we would also like to have displayed. Furthermore the source code for the LCOV program is in Perl so it is not wise to modify it. We are going to have to create our own visualizer with the statistics we want to display. This will not be too difficult because the .info file that is created gives data that we can use to visualize the different parts of GCOV. 
 
