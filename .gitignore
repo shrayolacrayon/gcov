@@ -7,3 +7,4 @@ hello
 *.info
 *.swp
 html
+.sconsign.dblite
