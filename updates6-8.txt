@@ -1,0 +1,9 @@
+Using GCOV with Mongo:
+In the mongo SConstruct there was a command --gcov that we could use in order to access the information that gcov used when compiling with SCons. 
+
+We first made an SConstruct file in Python in our test program in order to ensure that we could use the compiler in the same way. 
+In the mongo SConstruct we had to add some flags because we needed to make sure that we were using the right gcc version in compilation because of our previous issues with compiling the right version of gcc in Mac. 
+
+We used the command:
+ scons --gcov --cxx=g++-4.2 --cc=gcc-4.2  
+when compiling the files in the mongo directory with gcov. 
