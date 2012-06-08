@@ -16,8 +16,17 @@ a summary of all the .gcda files in the current directory using by running
 	lcov -c -d . -o infofile.info
 
 Where infofile.info is the name of the file you want to print out the summary
-data to. Once you've done this, you can generate html fo the summary data by
-running 
+data to. 
+
+If the .gcda files are in a different directory from the source files, you can
+specify an alternate directory for the source files using the -b flag.
+So if you have the source files in src/ and the .gcda files in build/, you 
+could invoke lcov like so.
+
+	lcov -c -d build -b src -o infofile.info
+
+Once you've generated the .info file, you can generate html for the summary 
+data by running 
 
 	genhtml infofile.info -o html
 
