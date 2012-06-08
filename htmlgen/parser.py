@@ -24,6 +24,7 @@ class TracefileParser:
                 if line == 'end_of_record':
                     if source is not None:
                         self.sources[source.filename] = source
+                        source = None
                 else:
                     key, argstr = tuple(line.split(':'))
                     args = argstr.split(',')
@@ -49,7 +50,7 @@ class TracefileParser:
                         elif key == 'BRDA':
                             line = int(args[0])
                             path = int(args[2])
-                            times = int(args[3])
+                            times = 0 if args[3] == '-' else int(args[3])
                             source.add_branch(gcov.Branch(line, path, times))
 
                         elif key == 'DA':
