@@ -17,8 +17,8 @@ secondExample, clientTest, and whereExample to generate some .gcda files.
 
 We then generated html output using the following commands
 
-	lcov -c -d build/darwin/cc_gcc-4.2/cxx_g++-4.2/gcov/ -b . -o mongodb.info
-	genhtml mongodb.info -o build/html
+	lcov -c -d build/darwin/cc_gcc-4.2/cxx_g++-4.2/gcov/ -b . -o build/mongodb.info
+	genhtml build/mongodb.info -o build/html
 	
 Creating this file and opening the index.html file gave results that were 
 basically a list of the different programs run and then results on the branch 
