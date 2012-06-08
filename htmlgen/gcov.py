@@ -1,9 +1,9 @@
 from collections import defaultdict
 from collections import namedtuple
 
-Branch = namedtuple('Branch', ['lineno', 'path', 'times'])
-Function = namedtuple('Function', ['name', 'lineno', 'times'])
-Line = namedtuple('Line', ['lineno', 'times'])
+Branch = namedtuple('Branch', ['lineno', 'path', 'hits'])
+Function = namedtuple('Function', ['name', 'lineno', 'hits'])
+Line = namedtuple('Line', ['lineno', 'hits'])
 
 def pair():
     return [None, None]
