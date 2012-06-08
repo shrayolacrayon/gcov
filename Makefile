@@ -1,6 +1,6 @@
 CC=gcc
 CFLAGS=-ftest-coverage -fprofile-arcs
-LDFLAGS=-ftest-coverage -fprofile-arcs
+LDFLAGS=-lgcov
 TESTARGS=
 HELLOARGS=
 
