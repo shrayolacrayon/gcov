@@ -11,3 +11,12 @@ We used the command:
 when compiling the files in the mongo directory with gcov on OSX so that scons
 would use regular gcc instead of llvm-gcc. 
 For linux we would be able to omit the --cxx and --cc flags.
+
+Once everything was compiled, we started mongod and ran firstExample, 
+secondExample, clientTest, and whereExample to generate some .gcda files.
+
+We then generated html output using the following commands
+
+	lcov -c -d build/darwin/cc_gcc-4.2/cxx_g++-4.2/gcov/ -b . -o mongodb.info
+	genhtml mongodb.info -o build/html
+
