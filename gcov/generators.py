@@ -11,7 +11,16 @@ def front_page(tracefile):
     directories = [(name, tracefile.coverage_summary(name)) \
                         for name in tracefile.list_dirs()]
 
-    return template.render(directories = tracefile.list_dirs(), 
-                           basepath = tracefile.basepath,
+    return template.render(basepath = tracefile.basepath,
                            directories = directories,
                            summary = summary)
+
+def directory_page(tracefile, directory):
+    template = env.get_template('directory.html')
+
+    summary = tracefile.coverage_summary(directory)
+
+    files = [(name, tracefile.coverage_summary(directory, name)) \
+                    for name in tracefile.list_files(directory)]
+
+    
