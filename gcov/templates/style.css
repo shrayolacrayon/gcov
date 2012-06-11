@@ -7,36 +7,57 @@ head{
 	margin: 20px 20px 10px 20px;
 	
 }
+body{
+	font-family: arial,verdana, sans-serif;
+}
 h1{
 	color: ##990000;
 	background-color: #FC9804;
-	font-family: arial, verdana, sans-serif;
 	text-align: center;
 }
-table{
-	font-family: arial,verdana, sans-serif;
+#summaryTable {
+
+	width: 50%;
+	border-width: thin;
+	border-height: thin;
+	
+	border-style: solid;
+	padding: 1px;
+	text-align: center;	
+	float: right;
+	
+}
+
+#info{
+	float: left;
+	border-width: thin;
+	border-style: solid;
+	text-align: center;
+	
+	
+}
+#dirTable{
 	width: 100%;
-	border-width: medium;
+	border-width: thin;
 	border-height: 1px;
 	
 	border-style: solid;
 	padding: 1px;
 	text-align: center;
+	
 }
 th{
 	padding: 1px;
 		
 }
-tr{
+
+td{
 	border-width: 1px;
 	border-height: 1px;
-	border-style:solid;
-	
-}
-td{
-
-	border-height: 1px;
 	border-style: solid;
+	padding: 1px;
+}
+tr{
 	padding: 1px;
 }
 
