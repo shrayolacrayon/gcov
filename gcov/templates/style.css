@@ -24,8 +24,6 @@ table{
 	text-align: center;
 }
 th{
-	border-width: 1px;
-	border-style: solid;
 	padding: 1px;
 		
 }
@@ -36,7 +34,7 @@ tr{
 	
 }
 td{
-	border-width: 1px;
+
 	border-height: 1px;
 	border-style: solid;
 	padding: 1px;
