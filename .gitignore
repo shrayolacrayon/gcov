@@ -9,3 +9,6 @@ hello
 html
 .sconsign.dblite
 *.pyc
+build
+dist
+*.egg-info
