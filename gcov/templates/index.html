@@ -5,6 +5,13 @@
     </head>
     <body>
         <h1> GCOV Visualization </h1>
+    <div id= "info" >
+        <table>
+        <tr> <th>Current view: </th> </tr>
+        <tr> <th> Top Level: </th> </tr>
+        </table>
+    </div>
+    <div id ="summaryTable">
         <table>
             <tr><th></th><th>Hits</th><th>Total</th><th>Coverage</th></tr>
             <tr>
@@ -26,6 +33,8 @@
                 <td>{{summary.branches.percent}}%</td>
             </tr>
         </table>
+        </div>
+    <div id= "dirTable">
         <table>
             <tr >
                 <th>Directory</th>
@@ -48,7 +57,7 @@
             </tr>
             {% for name,item in directories %}
                 <tr>
-                    <td>{{name}}</td>
+                    <td><a href=".{{name}}">{{name}}</td>
                     <th></th><th></th>
                     <td>{{item.lines.hits}}</td>
                     <td>{{item.lines.total}}</td>
@@ -58,11 +67,11 @@
                     <td>{{item.functions.percent}}</td>
                     <td>{{item.branches.hits}}</td>
                     <td>{{item.branches.total}}</td>
-                    <td>{{item.branches.percent}}</td>  
-                    
+                    <td>{{item.branches.percent}}</td>                
                 </tr>
             {% endfor %}
             
         </table>
+    </div>
 </body>
 </html>
