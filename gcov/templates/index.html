@@ -7,8 +7,8 @@
         <h1> GCOV Visualization </h1>
     <div id= "info" >
         <table>
-        <tr> <th>Current view: </th> </tr>
-        <tr> <th> Top Level: </th> </tr>
+        <tr> <th>Current view: </th> <td> top view </td></tr>
+        <tr> <th> Top Level: </th> <td> {{tracefile}} </td> </tr>
         </table>
     </div>
     <div id ="summaryTable">
@@ -57,7 +57,7 @@
             </tr>
             {% for name,item in directories %}
                 <tr>
-                    <td><a href=".{{name}}">{{name}}</td>
+                    <td><a href=".{{name}}/index.html">{{name}}</td>
                     <th></th><th></th>
                     <td>{{item.lines.hits}}</td>
                     <td>{{item.lines.total}}</td>

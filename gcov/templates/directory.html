@@ -1,4 +1,4 @@
-html>
+<html>
     <head>
         <title>{{basepath}}</title>
         <link rel= "stylesheet" type= "test/css" href= "style.css"/>
@@ -7,8 +7,8 @@ html>
         <h1> GCOV Visualization </h1>
     <div id= "info" >
         <table>
-        <tr> <th>Current view: </th> <a href= ".{{directory}}"><th> top level </tr>
-        <tr> <th> Top Level: </th> <th> {{tracefile}} </th> </tr>
+        <tr> <th>Current view: </th> <td> <a href= "{{toplevel}}"> top level </a >  - {{directory}} </td></tr>
+        <tr> <th> Test: </th> <td> {{tracefile}} </td> </tr>
         </table>
     </div>
     <div id ="summaryTable">
