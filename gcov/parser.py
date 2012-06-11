@@ -91,15 +91,21 @@ class TracefileParser:
         lineno = 1
         with open(source.filename) as f:
             for line in f:
+                info = {'text': line, 'number': lineno}
                 if lineno in source.functions:
-                    lineinfo.append({'type': 'function', 'function': source.functions[lineno]})
+                    info.update(function=source.functions[lineno],
+                                type = 'function')
                 elif lineno in source.branches:
-                    lineinfo.append({'type': 'branch', 'branch': source.branches[lineno]})
+                    info.update(type = 'branch',
+                                branch = source.branches[lineno])
                 elif lineno in source.lines:
-                    lineinfo.append({'type': 'line', 'line': source.lines[lineno]})
+                    info.update(type = 'line',
+                                line = source.lines[lineno])
                 else:
-                    lineinfo.append({'type': 'blank'})
+                    info.update(type = 'blank')
+                lineinfo.append(info)
                 lineno += 1
+        return lineinfo
 
     def _generic_coverage(self, calc_coverage, directory=None, filename=None):
         self._parse_once()
