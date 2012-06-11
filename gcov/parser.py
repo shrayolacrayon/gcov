@@ -1,6 +1,13 @@
+from __future__ import division
 from source import Source, Branch, Function, Line
 import os
-from collections import defaultdict
+from collections import defaultdict, namedtuple
+
+Coverage = namedtuple('Coverage', ['hits', 'total', 'percent'])
+Summary = namedtuple('Summary', ['lines', 'functions', 'branches'])
+
+def make_coverage(cov):
+    return Coverage(cov[0], cov[1], cov[0] / cov[1])
 
 class TracefileParser:
     def __init__(self, filename, basepath = None):
@@ -142,6 +149,13 @@ class TracefileParser:
         return self._generic_coverage(self._source_branch_coverage,
                                         directory, filename)
 
+    def coverage_summary(self, directory=None, filename=None):
+        lines = make_coverage(self.line_coverage(directory, filename))
+        functions = make_coverage(self.function_coverage(directory, filename))
+        branches = make_coverage(self.branch_coverage(directory, filename))
+
+        return Summary(lines, functions, branches)
+        
     def full_statistics(self, directory=None, filename=None):
         rows = [
             ('Line', self.line_coverage),
