@@ -10,14 +10,14 @@ def genhtml(infofile, basepath, outdir):
         f.write(front_page(tracefile))
 
     for directory in tracefile.list_dirs():
-        dirname = os.path.join(outdir, directory)
+        dirname = os.path.join(outdir, directory[1:])
         if not os.path.isdir(dirname):
             os.makedirs(dirname)
         with open(os.path.join(dirname, 'index.html'), 'w') as f:
             f.write(directory_page(tracefile, directory))
 
         for filename in tracefile.list_files(directory):
-            with open(os.path.join(dirname, filename), 'w') as f:
+            with open(os.path.join(dirname, filename + '.html'), 'w') as f:
                 f.write(file_page(tracefile, directory, filename))
 
 if __name__ == '__main__':
