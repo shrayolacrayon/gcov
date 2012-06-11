@@ -1,5 +1,5 @@
-from parser import TracefileParser
-from generators import front_page
+from gcov.parser import TracefileParser
+from gcov.generators import front_page
 import sys
 
 if __name__ == '__main__':

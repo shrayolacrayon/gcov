@@ -1,4 +1,4 @@
-from parser import TracefileParser
+from gcov.parser import TracefileParser
 import sys
 
 if __name__ == '__main__':
