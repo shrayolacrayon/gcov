@@ -1,4 +1,4 @@
-import gcov
+from source import Source, Branch, Function, Line
 import os
 from collections import defaultdict
 
@@ -36,7 +36,7 @@ class TracefileParser:
                     if key == 'SF':
                         fname = args[0]
                         if fname.startswith(self.basepath):
-                            source = gcov.Source(args[0])
+                            source = Source(args[0])
                         else:
                             source = None
 
@@ -48,19 +48,19 @@ class TracefileParser:
 
                         elif key == 'FNDA':
                             hits = int(args[0])
-                            func = gcov.Function(funcline, funcname, hits)
+                            func = Function(funcline, funcname, hits)
                             source.add_function(func)
 
                         elif key == 'BRDA':
                             line = int(args[0])
                             path = int(args[2])
                             hits = 0 if args[3] == '-' else int(args[3])
-                            source.add_branch(gcov.Branch(line, path, hits))
+                            source.add_branch(Branch(line, path, hits))
 
                         elif key == 'DA':
                             line = int(args[0])
                             hits = int(args[1])
-                            source.add_line(gcov.Line(line, hits))
+                            source.add_line(Line(line, hits))
 
     def list_dirs(self):
         self._parse_once()
