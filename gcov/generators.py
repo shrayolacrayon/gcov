@@ -1,5 +1,6 @@
 from jinja2 import Environment, PackageLoader
 from collections import namedtuple
+import os
 
 env = Environment(loader = PackageLoader('gcov'))
 
@@ -13,7 +14,8 @@ def front_page(tracefile):
 
     return template.render(basepath = tracefile.basepath,
                            directories = directories,
-                           summary = summary)
+                           summary = summary,
+                           tracefile = os.path.basename(tracefile.filename))
 
 def directory_page(tracefile, directory):
     template = env.get_template('directory.html')
@@ -25,6 +27,19 @@ def directory_page(tracefile, directory):
 
     return template.render(directory = directory,
                            files = files,
-                           summary = summary)
+                           summary = summary,
+                           tracefile = os.path.basename(tracefile.filename))
+
+
+def file_page(tracefile, directory, filename):
+    template = env.get_template('file.html')
+
+    summary = tracefile.coverage_summary(directory, filename)
+
+    lineinfo = tracefile.line_info(directory, filename)
+
+    return template.render(directory = directory, filename = filename,
+                           lineinfo = lineinfo,  summary = summary,
+                           tracefile = os.path.basename(tracefile.filename))
 
     
