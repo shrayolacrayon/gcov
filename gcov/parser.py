@@ -7,7 +7,7 @@ Coverage = namedtuple('Coverage', ['hits', 'total', 'percent'])
 Summary = namedtuple('Summary', ['lines', 'functions', 'branches'])
 
 def make_coverage(cov):
-    perc = round(cov[0] / cov[1] * 100, 2)
+    perc = round(cov[0] / cov[1] * 100, 2) if cov[1] > 0 else 100
     return Coverage(cov[0], cov[1], perc)
 
 class TracefileParser:
