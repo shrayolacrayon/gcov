@@ -22,14 +22,23 @@ table{
 	border-style: solid;
 	padding: 1px;
 	text-align: center;
-	border-collapse: collapse;
 }
 th{
 	border-width: 1px;
+	border-style: solid;
+	padding: 1px;
+		
+}
+tr{
+	border-width: 1px;
+	border-height: 1px;
+	border-style:solid;
 	
 }
 td{
+	border-width: 1px;
 	border-height: 1px;
-	
+	border-style: solid;
+	padding: 1px;
 }
 
