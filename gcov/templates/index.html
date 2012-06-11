@@ -1,11 +1,13 @@
 <html>
-<head>
-  <title>{{basepath}}</title>
-</head>
-<body>
-  <table>
-    <tr><th></th><th>Hits</th><th>Total</th><th>Coverage</th></tr>
-    <tr><td>Functions</td><td>{{fhits}}</td><td>{{ftotal}}</td><td>{{fperc}}%</td></tr>
+    <head>
+        <title>{{basepath}}</title>
+        <link rel= "stylesheet" type= "test/css" href= "style.css"/>
+    </head>
+    <body>
+        <h1> GCOV Visualization </h1>
+        <table>
+            <tr><th></th><th>Hits</th><th>Total</th><th>Coverage</th></tr>
+    <tr><td>Functions</td><td>{{summary.functions.hits}}</td><td>{{summary.functions.total}}</td><td>{{summary.functions.percent}}%</td></tr>
   </table>
 
 </body>
