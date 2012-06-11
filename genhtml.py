@@ -5,8 +5,9 @@ import argparse
 
 def genhtml(infofile, basepath, outdir):
     tracefile = TracefileParser(infofile, basepath)
-    
-    with open(os.path.join(outdir, 'index.html'), 'w') as f:
+    toplevel = os.path.join(outdir, 'index.html')
+
+    with open(toplevel, 'w') as f:
         f.write(front_page(tracefile))
 
     for directory in tracefile.list_dirs():
@@ -14,11 +15,11 @@ def genhtml(infofile, basepath, outdir):
         if not os.path.isdir(dirname):
             os.makedirs(dirname)
         with open(os.path.join(dirname, 'index.html'), 'w') as f:
-            f.write(directory_page(tracefile, directory))
+            f.write(directory_page(tracefile, toplevel, directory))
 
         for filename in tracefile.list_files(directory):
             with open(os.path.join(dirname, filename + '.html'), 'w') as f:
-                f.write(file_page(tracefile, directory, filename))
+                f.write(file_page(tracefile, toplevel, directory, filename))
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description = 'Generate html for tracefile')

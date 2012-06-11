@@ -17,7 +17,7 @@ def front_page(tracefile):
                            summary = summary,
                            tracefile = os.path.basename(tracefile.filename))
 
-def directory_page(tracefile, directory):
+def directory_page(tracefile, toplevel, directory):
     template = env.get_template('directory.html')
 
     summary = tracefile.coverage_summary(directory)
@@ -28,10 +28,11 @@ def directory_page(tracefile, directory):
     return template.render(directory = directory,
                            files = files,
                            summary = summary,
+                           toplevel = toplevel,
                            tracefile = os.path.basename(tracefile.filename))
 
 
-def file_page(tracefile, directory, filename):
+def file_page(tracefile, toplevel, directory, filename):
     template = env.get_template('file.html')
 
     summary = tracefile.coverage_summary(directory, filename)
@@ -40,6 +41,7 @@ def file_page(tracefile, directory, filename):
 
     return template.render(directory = directory, filename = filename,
                            lineinfo = lineinfo,  summary = summary,
+                           toplevel = toplevel,
                            tracefile = os.path.basename(tracefile.filename))
 
     
