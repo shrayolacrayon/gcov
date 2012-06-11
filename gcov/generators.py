@@ -4,6 +4,9 @@ import os
 
 env = Environment(loader = PackageLoader('gcov'))
 
+def stylesheet():
+    return env.get_template('style.css').render()
+
 def front_page(tracefile):
     template = env.get_template('index.html')
 

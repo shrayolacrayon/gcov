@@ -1,5 +1,5 @@
 from gcov.parser import TracefileParser
-from gcov.generators import front_page, directory_page, file_page
+from gcov.generators import front_page, directory_page, file_page, stylesheet
 import sys, os
 import argparse
 
@@ -10,12 +10,19 @@ def genhtml(infofile, basepath, outdir):
     with open(toplevel, 'w') as f:
         f.write(front_page(tracefile))
 
+    with open(os.path.join(outdir, 'style.css'), 'w') as f:
+        f.write(stylesheet())
+
     for directory in tracefile.list_dirs():
         dirname = os.path.join(outdir, directory[1:])
         if not os.path.isdir(dirname):
             os.makedirs(dirname)
+        
         with open(os.path.join(dirname, 'index.html'), 'w') as f:
             f.write(directory_page(tracefile, toplevel, directory))
+
+        with open(os.path.join(dirname, 'style.css'), 'w') as f:
+            f.write(stylesheet())
 
         for filename in tracefile.list_files(directory):
             with open(os.path.join(dirname, filename + '.html'), 'w') as f:
