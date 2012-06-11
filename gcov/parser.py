@@ -85,6 +85,22 @@ class TracefileParser:
     def get_source_abspath(self, abspath):
         return self.get_source(*os.path.split(abspath))
 
+    def line_info(self, directory, filename):
+        source = self.get_source(directory, filename)
+        lineinfo = []
+        lineno = 1
+        with open(source.filename) as f:
+            for line in f:
+                if lineno in source.functions:
+                    lineinfo.append({'type': 'function', 'function': source.functions[lineno]})
+                elif lineno in source.branches:
+                    lineinfo.append({'type': 'branch', 'branch': source.branches[lineno]})
+                elif lineno in source.lines:
+                    lineinfo.append({'type': 'line', 'line': source.lines[lineno]})
+                else:
+                    lineinfo.append({'type': 'blank'})
+                lineno += 1
+
     def _generic_coverage(self, calc_coverage, directory=None, filename=None):
         self._parse_once()
         hits, total = 0, 0
