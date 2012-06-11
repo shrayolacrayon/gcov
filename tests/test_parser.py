@@ -1,5 +1,8 @@
-from gcov.parser import TracefileParser
 import sys
+
+sys.path.append('.')
+
+from gcov.parser import TracefileParser
 
 if __name__ == '__main__':
     tp = TracefileParser(sys.argv[1])
