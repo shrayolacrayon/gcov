@@ -26,5 +26,43 @@
                 <td>{{summary.branches.percent}}%</td>
             </tr>
         </table>
+        <table>
+            <tr >
+                <th>Directory</th>
+                <th></th><th></th><th></th>
+                <th>Line Coverage</th>
+                <th></th><th></th>
+                <th>Functions </th>
+                <th></th><th></th>
+                <th>Branches </th>
+                <th></th><th></th>
+            </tr>
+            <tr>
+                <th></th><th></th><th></th>
+                <th>Line Hits</th><th>Line Total</th><th>% Lines</th>
+                <th>Function Hits</th><th>Function Total</th>
+                <th>% Functions</th>
+                <th>Branch Hits</th><th>Total Branches</th>
+                <th>% Branches Taken</th>
+                
+            </tr>
+            {% for name,item in directories %}
+                <tr>
+                    <td>{{name}}</td>
+                    <th></th><th></th>
+                    <td>{{item.lines.hits}}</td>
+                    <td>{{item.lines.total}}</td>
+                    <td>{{item.lines.percent}}</td>
+                    <td>{{item.functions.hits}}</td>
+                    <td>{{item.functions.total}}</td>
+                    <td>{{item.functions.percent}}</td>
+                    <td>{{item.branches.hits}}</td>
+                    <td>{{item.branches.total}}</td>
+                    <td>{{item.branches.percent}}</td>  
+                    
+                </tr>
+            {% endfor %}
+            
+        </table>
 </body>
 </html>
