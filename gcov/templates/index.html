@@ -7,8 +7,24 @@
         <h1> GCOV Visualization </h1>
         <table>
             <tr><th></th><th>Hits</th><th>Total</th><th>Coverage</th></tr>
-    <tr><td>Functions</td><td>{{summary.functions.hits}}</td><td>{{summary.functions.total}}</td><td>{{summary.functions.percent}}%</td></tr>
-  </table>
-
+            <tr>
+                <td>Lines</td>
+                <td>{{summary.lines.hits}}</td>
+                <td>{{summary.lines.total}}</td>
+                <td>{{summary.lines.percent}}%</td>
+            </tr>
+            <tr>
+                <td>Functions</td>
+                <td>{{summary.functions.hits}}</td>
+                <td>{{summary.functions.total}}</td>
+                <td>{{summary.functions.percent}}%</td>
+            </tr>
+            <tr>
+                <td>Branches</td>
+                <td>{{summary.branches.hits}}</td>
+                <td>{{summary.branches.total}}</td>
+                <td>{{summary.branches.percent}}%</td>
+            </tr>
+        </table>
 </body>
 </html>
