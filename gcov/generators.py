@@ -23,4 +23,8 @@ def directory_page(tracefile, directory):
     files = [(name, tracefile.coverage_summary(directory, name)) \
                     for name in tracefile.list_files(directory)]
 
+    return template.render(directory = directory,
+                           files = files,
+                           summary = summary)
+
     
