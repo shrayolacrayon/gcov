@@ -16,12 +16,20 @@ h1{
 table{
 	font-family: arial,verdana, sans-serif;
 	width: 100%;
-	border-width: 1px;
+	border-width: medium;
 	border-height: 1px;
+	
 	border-style: solid;
 	padding: 1px;
+	text-align: center;
+	border-collapse: collapse;
 }
 th{
-	width: 20%;
+	border-width: 1px;
 	
 }
+td{
+	border-height: 1px;
+	
+}
+
