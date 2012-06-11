@@ -1,0 +1,27 @@
+head{
+    background-color: ##FFCC66
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: right bottom;
+	font-family: arial, verdana, sans-serif;
+	margin: 20px 20px 10px 20px;
+	
+}
+h1{
+	color: ##990000;
+	background-color: #FC9804;
+	font-family: arial, verdana, sans-serif;
+	text-align: center;
+}
+table{
+	font-family: arial,verdana, sans-serif;
+	width: 100%;
+	border-width: 1px;
+	border-height: 1px;
+	border-style: solid;
+	padding: 1px;
+}
+th{
+	width: 20%;
+	
+}
