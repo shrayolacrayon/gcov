@@ -23,8 +23,7 @@ class TracefileParser:
             self._parse()
 
     def _parse(self):
-        funcname = ''
-        funcline = 0
+        funclines = {}
         source = None
 
         with open(self.filename) as f:
@@ -50,12 +49,13 @@ class TracefileParser:
                     elif source is not None:
 
                         if key == 'FN':
-                            funcline = int(args[0])
-                            funcname = args[1]
+                            name = args[1]
+                            funclines[name] = int(args[0])
 
                         elif key == 'FNDA':
                             hits = int(args[0])
-                            func = Function(funcline, funcname, hits)
+                            name = args[1]
+                            func = Function(funclines[name], name, hits)
                             source.add_function(func)
 
                         elif key == 'BRDA':
