@@ -1,0 +1,38 @@
+In the latest commits to the master branch, support has been added for building 
+mongodb with gcov flags. You can do this with the following command.
+
+	scons --gcov
+
+Be careful when building on the latest versions of OSX, since the gcc packaged 
+with XCode now is llvm-gcc, which does not have gcov support. Make sure to 
+install regular gcc and pass the correct compiler to scons using the --cxx flag.
+
+Once the code is compiled, you should see a bunch of .gcno files created in the 
+build directory. You can then run any tests you want to run and .gcda files will 
+be created in the build directory. To generate a tracefile from this data
+run the following command
+
+	buildscripts/lcov/runlcov.sh build/path/to/gcov
+
+where the first argument is the build directory in which the .gcda files were
+created. This program will create a tracefile in build/mongodb-`date +%s`.info.
+Each run of runlcov.sh will produce a different tracefile.
+
+You can generate html from a tracefile using the following command
+
+	genhtml tracefile.info -o html
+
+where html is the directory in which the html files will be placed.
+
+If you want to see information from separate tests, you can use 
+
+	find build/path/to/gcov -name \*.gcda -exec rm {} \;
+
+to clear out the gcda files in between tests, so that you will get fresh
+results instead of accumulated ones. 
+
+If you want to merge the tracefiles from several different tests into one 
+tracefile, use the following command. 
+
+	lcov -a tracefile1.info -a tracefile2.info ... -o aggregate.info
+
