@@ -36,3 +36,27 @@ tracefile, use the following command.
 
 	lcov -a tracefile1.info -a tracefile2.info ... -o aggregate.info
 
+Commands have been added into SConscipt.coverage to make these tasks easier.
+Currently, running any of the smoke tests with the --gcov option will cause
+lcov to be run after every test (this will take a while, so be patient). 
+
+This will place tracefiles under build/coverage/tracefiles/testname.info
+
+Where testname is the name of the test being run (minus the extension if it is
+a js file).
+
+You can also aggregate the tracefiles into one by running
+
+	scons aggregateTracefiles
+
+This will run lcov -a on the files in build/coverage/tracefiles to generate an
+aggregate tracefile in build/coverage/tracefiles/aggregate.info
+
+Finally, you can generate html for each tracefile by running
+
+	scons genHTML
+
+This will create separate directories under build/coverage/html. Each directory
+corresponds to a tracefile in build/coverage/tracefiles. This command will
+also create a file build/coverage/html/index.html that lists all of the 
+html directories. 
