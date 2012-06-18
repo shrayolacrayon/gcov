@@ -20,6 +20,9 @@ int main (int argc, char *argv[]){
 	{
 	printStart(argv[1]);
 	}
+
+	for(i=0; i<5; i++){ if(i % 2 == 0) printf("%d", i); if(i == 6) printf("fizz");  }
+
 	return 0;
 	
 }
